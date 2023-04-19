@@ -122,9 +122,15 @@ def main():
     global player_name
     #Get player name
     get_player_name()
+    #Bet placing
     #Player card random selection from deck
     player_hand_selection()
     #Dealer card random selection from deck
     dealer_hand_selection()
+    #First two round play
+    #Player choose to hit or stand
+    #Giving results according to the win condition
+    #Calculating bet win
+    #Start again the game
 main()   
       
