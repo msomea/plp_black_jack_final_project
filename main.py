@@ -93,9 +93,29 @@ def first_rounds():
         print(f' Total Dealer card is {dealer_hand_1} + XXX ')
         print('***********************************************************')
     #Check if player bust
-    
+    player_bust_on_hit()
     #Check if player win BlackJack
     
+    
+def player_bust_on_hit():
+    global player_total, player_hand_count, win_condition, player_bust
+    if player_total > 21:
+        win_condition = 0
+        player_bust = 1
+        print('========================================================')
+    if player_total > 21 and player_hand_count == 2 :
+        print(f' {player_name.title()} Bust. You have {player_hand_1} and {player_hand_2} on hand ')
+    if player_total > 21 and player_hand_count == 3 :
+        print(f' {player_name.title()} Bust. You have {player_hand_1}, {player_hand_2} and {player_hand_3} on hand ')
+    if player_total > 21 and player_hand_count == 4 :
+        print(f' {player_name.title()} Bust. You have {player_hand_1}, {player_hand_2}, {player_hand_3} and {player_hand_4} on hand ')
+    if player_total > 21 and player_hand_count == 5 :
+        print(f' {player_name.title()} Bust. You have {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4} and {player_hand_5} on hand ')
+    if player_total > 21 and player_hand_count == 6 :
+        print(f' {player_name.title()} Bust. You have {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4}, {player_hand_5} and {player_hand_6} on hand ')
+    if player_total > 21:
+        print(f' Total {player_name.title()} card is {player_total} ')
+        print('========================================================')
 
 
 def main():
