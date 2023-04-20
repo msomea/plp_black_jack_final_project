@@ -397,7 +397,104 @@ def tie_game_condition():
         tie_game = 1
         print(' TIE GAME!')
         print_tie_game()
+        
+#Win Message
+#When Player win with Blackjack
+def print_player_win_black_jack():
+    print('========================================================')
+    if player_hand_count == 2 :
+        print(f' {player_name.title()} have: {player_hand_1} and {player_hand_2} on hand ')
+    if player_hand_count == 3 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2} and {player_hand_3} on hand ')
+    if player_hand_count == 4 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3} and {player_hand_4} on hand ')
+    if player_hand_count == 5 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4} and {player_hand_5} on hand ')
+    if player_hand_count >= 6 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4}, {player_hand_5} and {player_hand_6} on hand ')
+    print(f' {player_name.title()} won with total of {player_total} card')
+    print('========================================================')
+    
+#When Player win normal               
+def print_player_win():
+    print('========================================================')
+    if player_hand_count == 2 :
+        print(f' {player_name.title()} have: {player_hand_1} and {player_hand_2} on hand ')
+    if player_hand_count == 3 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2} and {player_hand_3} on hand ')
+    if player_hand_count == 4 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3} and {player_hand_4} on hand ')
+    if player_hand_count == 5 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4} and {player_hand_5} on hand ')
+    if player_hand_count >= 6 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4}, {player_hand_5} and {player_hand_6} on hand ')
+    print(f' {player_name.title()} won with total of {player_total} card')
+    if dealer_card_counter == 2:
+        print (f" Dealer have: {dealer_hand_1} and {dealer_hand_2} on hand")
+    if dealer_card_counter == 3:
+        print (f" Dealer have: {dealer_hand_1}, {dealer_hand_2} and {dealer_hand_3} on hand")
+    if dealer_card_counter == 4:
+        print (f" Dealer have: {dealer_hand_1}, {dealer_hand_2}, {dealer_hand_3} and {dealer_hand_4} on hand")    
+    if dealer_card_counter == 5:
+        print (f" Dealer have: {dealer_hand_1}, {dealer_hand_2}, {dealer_hand_3}, {dealer_hand_4} and {dealer_hand_5} on hand")
+    if dealer_card_counter == 6:
+        print (f" Dealer have: {dealer_hand_1}, {dealer_hand_2}, {dealer_hand_3}, {dealer_hand_4}, {dealer_hand_5} {dealer_hand_6} on hand")
+    print (f" Dealer has total of {dealer_total} card")
+    print('========================================================')
+    
+#when  dealer win normal   
+def print_dealer_win():
+    print('========================================================')
+    if player_hand_count == 2 :
+        print(f' {player_name.title()} have: {player_hand_1} and {player_hand_2} on hand ')
+    if player_hand_count == 3 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2} and {player_hand_3} on hand ')
+    if player_hand_count == 4 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3} and {player_hand_4} on hand ')
+    if player_hand_count == 5 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4} and {player_hand_5} on hand ')
+    if player_hand_count >= 6 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4}, {player_hand_5} and {player_hand_6} on hand ')
+    print(f' {player_name.title()} have total of {player_total} card')
+    if dealer_card_counter == 2:
+        print (f" Dealer have: {dealer_hand_1} and {dealer_hand_2} on hand")
+    if dealer_card_counter == 3:
+        print (f" Dealer have: {dealer_hand_1}, {dealer_hand_2} and {dealer_hand_3} on hand")
+    if dealer_card_counter == 4:
+        print (f" Dealer have: {dealer_hand_1}, {dealer_hand_2}, {dealer_hand_3} and {dealer_hand_4} on hand")    
+    if dealer_card_counter == 5:
+        print (f" Dealer have: {dealer_hand_1}, {dealer_hand_2}, {dealer_hand_3}, {dealer_hand_4} and {dealer_hand_5} on hand")
+    if dealer_card_counter == 6:
+        print (f" Dealer have: {dealer_hand_1}, {dealer_hand_2}, {dealer_hand_3}, {dealer_hand_4}, {dealer_hand_5} {dealer_hand_6} on hand")
+    print (f" Dealer won with total of {dealer_total} card")
+    print('========================================================')
 
+#When it is Tie Game ie Draw    
+def print_tie_game():
+    print('========================================================')
+    if player_hand_count == 2 :
+        print(f' {player_name.title()} have: {player_hand_1} and {player_hand_2} on hand ')
+    if player_hand_count == 3 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2} and {player_hand_3} on hand ')
+    if player_hand_count == 4 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3} and {player_hand_4} on hand ')
+    if player_hand_count == 5 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4} and {player_hand_5} on hand ')
+    if player_hand_count >= 6 :
+        print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4}, {player_hand_5} and {player_hand_6} on hand ')
+    print(f' {player_name.title()} have total of {player_total} card')
+    if dealer_card_counter == 2:
+        print (f" Dealer have: {dealer_hand_1} and {dealer_hand_2} on hand")
+    if dealer_card_counter == 3:
+        print (f" Dealer have: {dealer_hand_1}, {dealer_hand_2} and {dealer_hand_3} on hand")
+    if dealer_card_counter == 4:
+        print (f" Dealer have: {dealer_hand_1}, {dealer_hand_2}, {dealer_hand_3} and {dealer_hand_4} on hand")    
+    if dealer_card_counter == 5:
+        print (f" Dealer have: {dealer_hand_1}, {dealer_hand_2}, {dealer_hand_3}, {dealer_hand_4} and {dealer_hand_5} on hand")
+    if dealer_card_counter == 6:
+        print (f" Dealer have: {dealer_hand_1}, {dealer_hand_2}, {dealer_hand_3}, {dealer_hand_4}, {dealer_hand_5} {dealer_hand_6} on hand")
+    print (f" Dealer have total of {dealer_total} card")
+    print('========================================================')
 
 #Bet winning calculation
 def bet_winning():
@@ -405,7 +502,7 @@ def bet_winning():
     player_hand_count = 1
     if win_condition == 1:
         bet_win = (bet * 2)
-    if win_condition == 1 and player_blackjack = 1:
+    if win_condition == 1 and player_blackjack == 1:
         bet_win = (bet * 2.5) 
     if win_condition == 0:
         bet_win = 0
