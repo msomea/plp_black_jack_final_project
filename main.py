@@ -153,7 +153,19 @@ def player_hit_choice():
         else:
             print(' Please provide correct answer, For help enter help')
             continue
-        
+
+#This is important to controll Player Hand Selection
+def player_hand_count():
+    global player_hand_count, hit_choice
+    if player_hand_count == 2:
+        player_hand_count = 3
+    if player_hand_count == 3:
+        player_hand_count = 4
+    if player_hand_count == 4:
+        player_hand_count = 5
+    if player_hand_count == 5:
+        player_hand_count = 6
+                
 #Game play round 2 to 6. Only 6 Dealing is allowed
 def player_hit_round():
     global hit_choice, player_hit, player_total, player_hand_count, player_name
@@ -344,6 +356,48 @@ def player_bust_on_hit():
         print(f' Total {player_name.title()} card is {player_total} ')
         print('========================================================')
 
+#Player win condition and the Bet will Double
+def player_win():
+    global win_condition
+    if 21 > player_total > dealer_total or dealer_total > 21 > player_total:
+        win_condition = 1
+        print_player_win()
+
+#player win with black jack and the bet will be time 2.5        
+def player_win_blackjack():
+    global win_condition, dealer_total, player_total, player_blackjack
+    if 21 == player_total:
+        win_condition = 1
+        player_blackjack = 1
+        print(' BLACKJACK!')
+        print_player_win_black_jack()
+
+#Dealer win and the Player lost the bet        
+def dealer_win():
+    global win_condition
+    if 21 > dealer_total > player_total or player_total > 21 > dealer_total:
+        win_condition = 0
+        print_dealer_win()
+
+#Dealer win Black jack and the Player lost the bet
+def dealer_win_blackjack():
+    global win_condition, dealer_blackjack
+    if 21 == dealer_total:
+        win_condition = 0
+        dealer_blackjack = 1
+        print('***********************************************************')
+        print(' BLACKJACK!')
+        print_dealer_win()
+
+#Tie game. The player Bet will be returned
+def tie_game_condition():
+    global win_condition, tie_game
+    if player_total == dealer_total:
+        win_condition = 0
+        tie_game = 1
+        print(' TIE GAME!')
+        print_tie_game()
+
 
 #Bet winning calculation
 def bet_winning():
@@ -351,6 +405,8 @@ def bet_winning():
     player_hand_count = 1
     if win_condition == 1:
         bet_win = (bet * 2)
+    if win_condition == 1 and player_blackjack = 1:
+        bet_win = (bet * 2.5) 
     if win_condition == 0:
         bet_win = 0
     if tie_game == 1:
@@ -373,6 +429,7 @@ def main():
     #Player choose to hit or stand
     player_hit_choice()
     #Giving results according to the win condition
+    
     #Calculating bet win
     #Start again the game
 main()   
