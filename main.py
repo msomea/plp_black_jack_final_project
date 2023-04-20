@@ -134,7 +134,26 @@ def first_rounds():
     #Check if player bust
     player_bust_on_hit()
     #Check if player win BlackJack
-    
+
+#Player choose to hit or stand. If choose to hit will enter into play 2 - 6 loop
+def player_hit_choice():
+    global hit_choice, player_hand_count, player_hit, player_stand
+    while True:
+        hit_choice = str(input (" Press h/H to Hit. Press s/S to Stand: "))
+        hit_choice = hit_choice.lower()
+        if hit_choice in player_hit:
+            player_hand_count += 1
+            break
+        if hit_choice in player_stand:
+            dealer_hit()
+            break
+        if hit_choice in ask_help:
+            help()
+            continue
+        else:
+            print(' Please provide correct answer, For help enter help')
+            continue
+        
 #Game play round 2 to 6. Only 6 Dealing is allowed
 def player_hit_round():
     global hit_choice, player_hit, player_total, player_hand_count, player_name
@@ -352,6 +371,7 @@ def main():
     #First two round play
     first_rounds()
     #Player choose to hit or stand
+    player_hit_choice()
     #Giving results according to the win condition
     #Calculating bet win
     #Start again the game
