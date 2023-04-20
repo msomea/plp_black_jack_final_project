@@ -50,7 +50,7 @@ def dealer_hand_selection():
     
 #Bet placing
 def bet_placing():
-    global money, bet, balance, possible_win
+    global money, bet, balance, possible_win, black_jack_win 
     print('***********************************************************')
     while True:
         time.sleep(0.5)
@@ -78,7 +78,11 @@ def bet_placing():
             break
     balance=((int(money))-bet)
     possible_win = bet * 2
-    print(f' {player_name.title()} placed bet: Tsh {bet}. Available balance: Tsh {balance}. Possible winning: Tsh {possible_win}')
+    black_jack_win = bet * 3
+    print(f''' {player_name.title()} placed bet: Tsh {bet}. Available balance: Tsh {balance}.
+ Winning will pays you 2 times of your bet amount. Possible winning: Tsh {possible_win}.
+ Black Jack will pays you 3 times of your bet. Possible winning on Black Jack: Tsh {black_jack_win} ''')
+    print('***********************************************************')
     time.sleep(0.5)
 
 #First two round play
@@ -140,8 +144,8 @@ def first_rounds():
 def player_hit_choice():
     global hit_choice, player_hand_count, player_hit, player_stand
     while True:
-        hit_choice = str(input (" Press h/H to Hit. Press s/S to Stand: "))
-        hit_choice = hit_choice.lower()
+        hit_choice = str(input (" Press h/H to Hit, Press s/S to Stand and enter help for Help: "))
+        hit_choice = hit_choice.lower().strip()
         if hit_choice in player_hit:
             player_hand_count += 1
             break
@@ -154,18 +158,6 @@ def player_hit_choice():
         else:
             print(' Please provide correct answer, For help enter help')
             continue
-
-#This is important to controll Player Hand Selection
-def player_hand_count():
-    global player_hand_count, hit_choice
-    if player_hand_count == 2:
-        player_hand_count = 3
-    if player_hand_count == 3:
-        player_hand_count = 4
-    if player_hand_count == 4:
-        player_hand_count = 5
-    if player_hand_count == 5:
-        player_hand_count = 6
                 
 #Game play round 2 to 6. Only 6 Dealing is allowed
 def player_hit_round():
@@ -502,16 +494,18 @@ def print_tie_game():
 def help():
     print('========================================================')
     print('''
-Welcome to Black Jack game.
-This game was designed by Raphael Msomea
-You are starting the game with Tsh 10000 to place bet and multiply it by winning game
-You can place Bet starting from Tsh 500 up to the Maximum amount you have in your balance
-Watch out not to get below Tsh 500 or to Tsh 0
-You can choose to HIT by pressing 'h' and STAND by pressing 's'
-To start new game when run out of cash press 'n' 
-To Quite the game when promped press 'q'
-To access help enter 'help'
+    Welcome to Black Jack game.
+    This game was designed by Raphael Msomea
+    You are starting the game with Tsh 10000 to place bet and multiply it by winning game
+    You can place Bet starting from Tsh 500 up to the Maximum amount you have in your balance
+    Watch out not to get below Tsh 500 or to Tsh 0
+    You can choose to HIT by pressing 'h' and STAND by pressing 's'
+    To start new game when run out of cash press 'n' 
+    To Quite the game when promped press 'q'
+    To access help center enter 'help'
 ''')
+    print('========================================================')
+    
 #Bet winning calculation
 def bet_winning():
     global bet, bet_win, balance, money, player_hand_count
@@ -519,7 +513,7 @@ def bet_winning():
     if win_condition == 1:
         bet_win = (bet * 2)
     if win_condition == 1 and player_blackjack == 1:
-        bet_win = (bet * 2.5) 
+        bet_win = (bet * 3) 
     if win_condition == 0:
         bet_win = 0
     if tie_game == 1:
@@ -528,7 +522,7 @@ def bet_winning():
 
 #Better game play with Loops
 def game_play():
-    global hit_choice, player_hit, player_bust, player_blackjack
+    global hit_choice, player_hit, player_bust, player_blackjack, player_choice
     global player_hand_count, player_total, dealer_total, money, win_condition, balance, bet, bet_win
     while True:
         money = 10000
@@ -540,7 +534,18 @@ def game_play():
             #Bet placing
             bet_placing()
             #Dealer Play Round One and Two
-            first_rounds()
+            while True:
+                player_choice = input(' To start dealing press enter. To enter Help center enter help: ')
+                player_choice = player_choice.lower().strip()
+                if player_choice == '':
+                    first_rounds()
+                    break
+                if player_choice in ask_help:
+                    help()
+                    continue
+                else:
+                    first_rounds()
+                    break
             #Player choose to Hit or Stand if not Bust
             if player_bust != 1 and player_blackjack != 1: 
                 player_hit_choice()
