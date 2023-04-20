@@ -414,7 +414,22 @@ def print_player_win_black_jack():
         print(f' {player_name.title()} have: {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4}, {player_hand_5} and {player_hand_6} on hand ')
     print(f' {player_name.title()} won with total of {player_total} card')
     print('========================================================')
-    
+
+#Our help to use on how to play   
+def help():
+    print('========================================================')
+    print('''
+Welcome to Black Jack game.
+This game was designed by Raphael Msomea
+You are starting the game with Tsh 10000 to place bet and multiply it by winning game
+You can place Bet starting from Tsh 500 up to the Maximum amount you have in your balance
+Watch out not to get below Tsh 500 or to Tsh 0
+You can choose to HIT by pressing 'h' and STAND by pressing 's'
+To start new game when run out of cash press 'n' 
+To Quite the game when promped press 'q'
+To access help enter 'help'
+''')
+    print('========================================================')
 #When Player win normal               
 def print_player_win():
     print('========================================================')
