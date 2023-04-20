@@ -1,9 +1,10 @@
 #Importing random and time modules
+import math #for converting bet
 import random #for random selection of card from deck
 import time #to give life to our game and make it interactive
 
 #Global Variables
-global deck, player_hand_count, player_total, dealer_total
+global deck, player_hand_count, player_total, dealer_total, alphabet, alph
 global player_hit, player_stand, player_quite, player_proceed, ask_help
 
 #Global value
@@ -13,7 +14,9 @@ player_proceed = 'n' #Player proceed to new game when run out of casha
 player_quite = 'q' #Player quit the game and loop stop
 ask_help = 'help' #Player get help on playing game
 deck = [1, 2, 3, 4, 5 ,6, 7, 8, 8, 10, 11, 12, 13] #Deck for card selection. Ace is Always 1
+alphabet = ['a', 'b','c', 'd', 'e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x', 'y','z','!','@','$','%','^','&','*','(',')',',','/','[','\'']
 
+    
 #Function for asking player name. if none provided call them Strange Player.
 # If provided with white space strip the whitespace
 def get_player_name():
@@ -50,13 +53,28 @@ def dealer_hand_selection():
     
 #Bet placing
 def bet_placing():
-    global money, bet, balance, possible_win, black_jack_win 
+    global money, bet, balance, possible_win, black_jack_win, elements, alphabet
     print('***********************************************************')
     while True:
         time.sleep(0.5)
         print(f" Your balance: Tsh {money}")
         time.sleep(0.5)
-        bet=int(input(" Enter your bet: Tsh "))
+        bet = (input(" Enter your bet: Tsh ")) #get bet as string
+        bet = bet.lower().replace(',', '').replace('K', '000').replace('k', '000') #convert bet to all small, remove , and replace k with 1000
+        if bet == '': #if bet is empty return Tsh 0
+            print('***********************************************************')
+            print(' You can enter Integer only')
+            print('***********************************************************')
+            continue
+        for elements in bet: #If bet is alphanumeric or contain special character
+            elements = elements
+        if elements in alphabet:
+            print('***********************************************************')
+            print(' You can enter Integer only')
+            print('***********************************************************')
+            continue
+        bet = float(bet)
+        bet = math.ceil(bet)
         time.sleep(0.5)
         print('***********************************************************')
         time.sleep(0.5)
@@ -70,9 +88,13 @@ def bet_placing():
             game_play()
         if bet > money:
             print(" You Dont have enough balance")
+            time.sleep(0.5)
+            print('***********************************************************')
             continue
         if bet < 500 and money > 500:
-            print(" You can place bet starting from Tsh 500 ")
+            print(" You can place bet starting from Tsh 500")
+            time.sleep(0.5)
+            print('***********************************************************')
             continue
         else:
             break
@@ -354,6 +376,7 @@ def player_win():
     global win_condition
     if 21 > player_total > dealer_total or dealer_total > 21 > player_total:
         win_condition = 1
+        print(f' {player_name.upper()} WON')
         print_player_win()
 
 #player win with black jack and the bet will be time 2.5        
@@ -362,7 +385,7 @@ def player_win_blackjack():
     if 21 == player_total:
         win_condition = 1
         player_blackjack = 1
-        print(' BLACKJACK!')
+        print(f' BLACKJACK! {player_name.upper()} WON')
         print_player_win_black_jack()
 
 #Dealer win and the Player lost the bet        
@@ -370,6 +393,7 @@ def dealer_win():
     global win_condition
     if 21 > dealer_total > player_total or player_total > 21 > dealer_total:
         win_condition = 0
+        print(' DEALER WON')
         print_dealer_win()
 
 #Dealer win Black jack and the Player lost the bet
@@ -379,7 +403,7 @@ def dealer_win_blackjack():
         win_condition = 0
         dealer_blackjack = 1
         print('***********************************************************')
-        print(' BLACKJACK!')
+        print(' BLACK JACK! DEALER WON')
         print_dealer_win()
 
 #Tie game. The player Bet will be returned
@@ -388,7 +412,7 @@ def tie_game_condition():
     if player_total == dealer_total:
         win_condition = 0
         tie_game = 1
-        print(' TIE GAME!')
+        print(' TIE GAME! NO WINNER')
         print_tie_game()
         
 #Win Message
@@ -492,6 +516,8 @@ def print_tie_game():
 
 #Our help to use on how to play   
 def help():
+    print('========================================================')
+    print(' BLACK JACK HELP CENTER')
     print('========================================================')
     print('''
     Welcome to Black Jack game.
