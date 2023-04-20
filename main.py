@@ -1,4 +1,4 @@
-#Importing randoma and time modules
+#Importing random and time modules
 import random
 import time
 
@@ -81,7 +81,7 @@ def bet_placing():
     print(f' {player_name.title()} placed bet: Tsh {bet}. Available balance: Tsh {balance}. Possible winning: Tsh {possible_win}')
     time.sleep(0.5)
 
-#Firstt two round play
+#First two round play
 def first_rounds():
     global player_total, player_hand_count, hit_choice, win_condition, player_blackjack, player_bust, dealer_blackjack, tie_game
     win_condition = 0
@@ -135,7 +135,176 @@ def first_rounds():
     player_bust_on_hit()
     #Check if player win BlackJack
     
-#Player Bust condion. if player bust have to loose all the bet  
+#Game play round 2 to 6. Only 6 Dealing is allowed
+def player_hit_round():
+    global hit_choice, player_hit, player_total, player_hand_count, player_name
+    if hit_choice in player_hit and player_hand_count == 3:
+        player_total = player_hand_1 + player_hand_2 + player_hand_3
+        print(' ')
+        print('***********************************************************')
+        print(' Third Dealing')
+        time.sleep(0.5)
+        print(' Dealer is Dealing your card')
+        time.sleep(0.5)
+        print(' Please wait...')
+        wait = ('*****')
+        time.sleep(0.5)
+        print(f' {wait[:1]}')
+        time.sleep(0.5)
+        print(f' {wait[:2]}')
+        time.sleep(0.5)
+        print(f' {wait[:3]}')
+        time.sleep(0.5)
+        print(f' {player_name.title()} has {player_hand_1}, {player_hand_2} and {player_hand_3} on hand')
+        time.sleep(0.5)
+        print(f' Dealer has {dealer_hand_1} and XXX on hand')
+        time.sleep(0.5)
+        print('***********************************************************')
+        print(f' Total {player_name.title()} card is {player_total}')
+        print(f' Total Dealer card is {dealer_hand_1} + XXX ')
+        print('***********************************************************')
+
+    if hit_choice in player_hit and player_hand_count == 4:
+        player_total = player_hand_1 + player_hand_2 + player_hand_3 + player_hand_4
+        print(' ')
+        print('***********************************************************')
+        print(' Fourth Dealing')
+        time.sleep(0.5)
+        print(' Dealer is Dealing your card')
+        time.sleep(0.5)
+        print(' Please wait...')
+        wait = ('******')
+        time.sleep(0.5)
+        print(f' {wait[:1]}')
+        time.sleep(0.5)
+        print(f' {wait[:2]}')
+        time.sleep(0.5)
+        print(f' {wait[:3]}')
+        time.sleep(0.5)
+        print(f' {wait[:4]}')
+        time.sleep(0.5)
+        print(f' {player_name.title()} has {player_hand_1}, {player_hand_2}, {player_hand_3} and {player_hand_4} on hand')
+        time.sleep(0.5)
+        print(f' Dealer has {dealer_hand_1} and XXX on hand')
+        time.sleep(0.5)
+        print('***********************************************************')
+        print(f' Total {player_name.title()} card is {player_total}')
+        print(f' Total Dealer card is {dealer_hand_1} + XXX ')
+        print('***********************************************************')
+
+    if hit_choice in player_hit and player_hand_count == 5:
+        player_total = player_hand_1 + player_hand_2 + player_hand_3 + player_hand_4 + player_hand_5
+        print(' ')
+        print('***********************************************************')
+        print(' Fifth Dealing')
+        time.sleep(0.5)
+        print(' Dealer is Dealing your card')
+        time.sleep(0.5)
+        print(' Please wait...')
+        wait = ('******')
+        time.sleep(0.5)
+        print(f' {wait[:1]}')
+        time.sleep(0.5)
+        print(f' {wait[:2]}')
+        time.sleep(0.5)
+        print(f' {wait[:3]}')
+        time.sleep(0.5)
+        print(f' {wait[:4]}')
+        time.sleep(0.5)
+        print(f' {wait[:5]}')
+        time.sleep(0.5)
+        print(f' {player_name.title()} has {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4} and {player_hand_5} on hand')
+        time.sleep(0.5)
+        print(f' Dealer has {dealer_hand_1} and XXX on hand')
+        time.sleep(0.5)
+        print('***********************************************************')
+        print(f' Total {player_name.title()} card is {player_total}')
+        print(f' Total Dealer card is {dealer_hand_1} + XXX ')
+        print('***********************************************************')
+
+    if hit_choice in player_hit and player_hand_count == 6:
+        player_total = player_hand_1 + player_hand_2 + player_hand_3 + player_hand_4 + player_hand_5 + player_hand_6
+        print(' ')
+        print('***********************************************************')
+        print(' Sixth Dealing')
+        time.sleep(0.5)
+        print(' Dealer is Dealing your card')
+        time.sleep(0.5)
+        print(' Please wait...')
+        wait = ('******')
+        time.sleep(0.5)
+        print(f' {wait[:1]}')
+        time.sleep(0.5)
+        print(f' {wait[:2]}')
+        time.sleep(0.5)
+        print(f' {wait[:3]}')
+        time.sleep(0.5)
+        print(f' {wait[:4]}')
+        time.sleep(0.5)
+        print(f' {wait[:5]}')
+        time.sleep(0.5)
+        print(f' {wait[:6]}')
+        time.sleep(0.5)
+        print(f' {player_name.title()} has {player_hand_1}, {player_hand_2}, {player_hand_3}, {player_hand_4}, {player_hand_5} and {player_hand_6} on hand')
+        time.sleep(0.5)
+        print(f' Dealer has {dealer_hand_1} and XXX on hand')
+        time.sleep(0.5)
+        print('***********************************************************')
+        print(f' Total {player_name.title()} card is {player_total}')
+        print(f' Total Dealer card is {dealer_hand_1} + XXX ')
+        print('***********************************************************')
+        
+    if hit_choice in player_hit and player_hand_count == 7:
+        print('***********************************************************')
+        print(f' Sorry {player_name.title()} no more Hits')
+        dealer_hit()
+        
+#Dealer hitting when Player choose to Stand
+def dealer_hit():
+    global dealer_total, dealer_card_counter, dealer_blackjack
+    dealer_total = dealer_hand_1
+    if dealer_total < 17:
+        dealer_total = (dealer_total + dealer_hand_2)
+        dealer_card_counter=2
+        dealer_win_blackjack()
+    if dealer_total < 17:
+        dealer_total = (dealer_total + dealer_hand_3)
+        dealer_card_counter=3
+        dealer_win_blackjack()
+    if dealer_total < 17:
+        dealer_total = (dealer_total + dealer_hand_4)
+        dealer_card_counter=4
+        dealer_win_blackjack()
+    if dealer_total < 17:
+        dealer_total = (dealer_total + dealer_hand_5)
+        dealer_card_counter=5
+        dealer_win_blackjack()
+    if dealer_total < 17:
+        dealer_total = (dealer_total + dealer_hand_6)
+        dealer_card_counter=6
+        dealer_win_blackjack()
+    wait = ("*******")
+    if dealer_blackjack == 0:
+        print('***********************************************************')
+        print(f" Dealer is Hiting. Please {player_name.title()} Hold tight!....")
+        print(" " + wait[:1])
+        time.sleep(0.5)
+        print(" " + wait[:2])
+        time.sleep(0.5)
+        print(" " + wait[:3])
+        time.sleep(0.5)
+        print(" " + wait[:4])
+        time.sleep(0.5)
+        print(" " + wait[:3])
+        time.sleep(0.5)
+        print(" " + wait[:2])
+        time.sleep(0.5)
+        print(" " + wait[:1])
+        time.sleep(0.5)
+        print('***********************************************************')
+    tie_game_condition()
+    
+#Player Bust condition. if player bust have to loose all the bet  
 def player_bust_on_hit():
     global player_total, player_hand_count, win_condition, player_bust
     if player_total > 21:
@@ -157,6 +326,19 @@ def player_bust_on_hit():
         print('========================================================')
 
 
+#Bet winning calculation
+def bet_winning():
+    global bet, bet_win, balance, money, player_hand_count
+    player_hand_count = 1
+    if win_condition == 1:
+        bet_win = (bet * 2)
+    if win_condition == 0:
+        bet_win = 0
+    if tie_game == 1:
+        bet_win = bet
+    money = balance + bet_win
+
+#Main game play
 def main():
     global player_name
     #Get player name
