@@ -348,7 +348,9 @@ def main():
     #Dealer card random selection from deck
     dealer_hand_selection()
     #Bet placing
+    bet_placing()
     #First two round play
+    first_rounds()
     #Player choose to hit or stand
     #Giving results according to the win condition
     #Calculating bet win
