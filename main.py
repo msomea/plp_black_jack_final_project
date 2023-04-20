@@ -1,6 +1,6 @@
 #Importing random and time modules
-import random
-import time
+import random #for random selection of card from deck
+import time #to give life to our game and make it interactive
 
 #Global Variables
 global deck, player_hand_count, player_total, dealer_total
@@ -134,6 +134,7 @@ def first_rounds():
     #Check if player bust
     player_bust_on_hit()
     #Check if player win BlackJack
+    player_win_blackjack()
 
 #Player choose to hit or stand. If choose to hit will enter into play 2 - 6 loop
 def player_hit_choice():
@@ -415,20 +416,6 @@ def print_player_win_black_jack():
     print(f' {player_name.title()} won with total of {player_total} card')
     print('========================================================')
 
-#Our help to use on how to play   
-def help():
-    print('========================================================')
-    print('''
-Welcome to Black Jack game.
-This game was designed by Raphael Msomea
-You are starting the game with Tsh 10000 to place bet and multiply it by winning game
-You can place Bet starting from Tsh 500 up to the Maximum amount you have in your balance
-Watch out not to get below Tsh 500 or to Tsh 0
-You can choose to HIT by pressing 'h' and STAND by pressing 's'
-To start new game when run out of cash press 'n' 
-To Quite the game when promped press 'q'
-To access help enter 'help'
-''')
     print('========================================================')
 #When Player win normal               
 def print_player_win():
@@ -511,6 +498,20 @@ def print_tie_game():
     print (f" Dealer have total of {dealer_total} card")
     print('========================================================')
 
+#Our help to use on how to play   
+def help():
+    print('========================================================')
+    print('''
+Welcome to Black Jack game.
+This game was designed by Raphael Msomea
+You are starting the game with Tsh 10000 to place bet and multiply it by winning game
+You can place Bet starting from Tsh 500 up to the Maximum amount you have in your balance
+Watch out not to get below Tsh 500 or to Tsh 0
+You can choose to HIT by pressing 'h' and STAND by pressing 's'
+To start new game when run out of cash press 'n' 
+To Quite the game when promped press 'q'
+To access help enter 'help'
+''')
 #Bet winning calculation
 def bet_winning():
     global bet, bet_win, balance, money, player_hand_count
@@ -525,24 +526,67 @@ def bet_winning():
         bet_win = bet
     money = balance + bet_win
 
-#Main game play
+#Better game play with Loops
+def game_play():
+    global hit_choice, player_hit, player_bust, player_blackjack
+    global player_hand_count, player_total, dealer_total, money, win_condition, balance, bet, bet_win
+    while True:
+        money = 10000
+        while money > 0:
+            #Random select player Card
+            player_hand_selection()
+            #Random select dealer card
+            dealer_hand_selection()
+            #Bet placing
+            bet_placing()
+            #Dealer Play Round One and Two
+            first_rounds()
+            #Player choose to Hit or Stand if not Bust
+            if player_bust != 1 and player_blackjack != 1: 
+                player_hit_choice()
+                while hit_choice in player_hit:
+                    #Player choose to Hit
+                    player_hit_round()
+                    #Check for player Burst
+                    player_bust_on_hit()
+                    #Check for blackjack
+                    player_win_blackjack()
+                    #Player choose to Hit or Stand when still on game
+                    if player_bust == 0 and player_blackjack == 0: 
+                        player_hit_choice()
+                    #Play stop when player Bust or win by BlackJack
+                    if player_bust == 1 or player_blackjack == 1:
+                        break
+                    if player_hand_count == 7:
+                        print('***********************************************************')
+                        print(f' Sorry {player_name.title()} no more dealing')
+                        dealer_hit()
+                        break
+            #Check for player or dealer win or Tie game
+            if player_bust == 0 and player_blackjack == 0:
+                player_win()
+            if dealer_blackjack == 0 and player_bust == 0 and player_blackjack == 0:
+                dealer_win()
+            if dealer_blackjack == 1:
+                dealer_win_blackjack() 
+            #Bet ammount calculation
+            bet_winning()
+        #Ending game
+        print(f" You are out of Cash! {player_name.title()} ")
+        time.sleep(0.5)
+        choice = str(input(" To quite press q/Q. To start new game press n/N: "))
+        choice = choice.lower()
+        if choice in player_quite:
+            break
+        if choice in player_proceed:
+            continue
+#Main game play   
 def main():
     global player_name
     #Get player name
     get_player_name()
-    #Player card random selection from deck
-    player_hand_selection()
-    #Dealer card random selection from deck
-    dealer_hand_selection()
-    #Bet placing
-    bet_placing()
-    #First two round play
-    first_rounds()
-    #Player choose to hit or stand
-    player_hit_choice()
-    #Giving results according to the win condition
-    
-    #Calculating bet win
-    #Start again the game
+    #Game play
+    game_play()
 main()   
+
       
