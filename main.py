@@ -14,7 +14,7 @@ player_proceed = 'n' #Player proceed to new game when run out of casha
 player_quite = 'q' #Player quit the game and loop stop
 ask_help = 'help' #Player get help on playing game
 deck = [1, 2, 3, 4, 5 ,6, 7, 8, 8, 10, 11, 12, 13] #Deck for card selection. Ace is Always 1
-alphabet = ['a', 'b','c', 'd', 'e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x', 'y','z','!','@','$','%','^','&','*','(',')',',','/','[','\'']
+alphabet = ['a', 'b','c', 'd', 'e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x', 'y','z','!','@','$','%','^','&','*','(',')',',','/','[','\\']
 
     
 #Function for asking player name. if none provided call them Strange Player.
@@ -65,6 +65,9 @@ def bet_placing():
             print('***********************************************************')
             print(' You can enter Integer only')
             print('***********************************************************')
+            continue
+        if bet == 'help':
+            help()
             continue
         for elements in bet: #If bet is alphanumeric or contain special character
             elements = elements
