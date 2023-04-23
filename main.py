@@ -382,7 +382,7 @@ def player_win():
         print(f' {player_name.upper()} WON')
         print_player_win()
 
-#player win with black jack and the bet will be time 2.5        
+#player win with black jack and the bet will be 3 times      
 def player_win_blackjack():
     global win_condition, dealer_total, player_total, player_blackjack
     if 21 == player_total:
@@ -520,7 +520,7 @@ def print_tie_game():
 #Our help to use on how to play   
 def help():
     print('========================================================')
-    print(' BLACK JACK HELP CENTER')
+    print('     BLACK JACK HELP CENTER')
     print('========================================================')
     print('''
     Welcome to Black Jack game.
