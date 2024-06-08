@@ -1,5 +1,5 @@
-# plp_final_project
-This is Repository for my Black Jack game with bet for PLP Python final Project.
+# Black Jack Game
+This is Repository for my Black Jack game with bet bet option.
 # How does this work
 1. Game will ask the Player name and remembering it through out the game. If player dont provide one Game will call them Strange Player
 2. Will display amount of available bet balance
